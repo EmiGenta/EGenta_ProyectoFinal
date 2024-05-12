@@ -12,35 +12,27 @@ from django.views.generic import (
 )
 
 from . import forms, models
-
-# Creo el home de Tarjetas
-# def home(request):
-#     consulta = request.GET.get("consulta", None)
-#     form = forms.TarjetasForm()
-#     if consulta:
-#         print(consulta)
-#         query = models.Tarjetas.objects.filter(nombre__icontains=consulta)
-#     else:
-#         query = models.Tarjetas.objects.all()
-#     context = {"tarjetas": query, "form": form} #consulta a la bdd
-#     return render(request, "tarjetas/index.html", context)
+from .models import Tarjetas
 
 def home(request):
-    return render(request, "tarjetas/index.html")
+    consulta = request.GET.get("consulta")
+    if consulta:
+        tarjetas = Tarjetas.objects.filter(nombre__icontains=consulta)
+    else:
+        tarjetas = Tarjetas.objects.all()
+    return render(request, "tarjetas/index.html", {"tarjetas": tarjetas})
 
 class TarjetasList(ListView):
     model = models.Tarjetas
+    template_name = "tarjetas/index.html"
+    context_object_name = "object_list"  # Cambiado de 'tarjetas' a 'object_list'
 
-    # context_object_name = "productos"
-    # template_name = "producto/productocategoria___list.html"
-
-    def get_queryset(self) -> QuerySet:
+    def get_queryset(self):
+        queryset = super().get_queryset()
         if self.request.GET.get("consulta"):
             consulta = self.request.GET.get("consulta")
-            object_list = models.Tarjetas.objects.filter(nombre__icontains=consulta)
-        else:
-            object_list = models.Tarjetas.objects.all()
-        return object_list
+            queryset = queryset.filter(nombre__icontains=consulta)
+        return queryset
 
 class TarjetasCreate(CreateView):
     model = models.Tarjetas
