@@ -1,0 +1,20 @@
+
+{% block titulo %}
+    Descuentos en Tarjetas de Crédito y Débito
+{% endblock titulo %}
+{% block contenido %}
+    <div class="container my-5">
+        <h3 class="pb-3 border-bottom">Tarjetas</h3>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4">
+            <a class="btn btn-primary me-md-2"
+               href="{% url 'tarjetas:tarjetas_create' %}"
+               role="button">Ingresar una nueva tarjeta</a>
+            <a class="btn btn-outline-primary"
+               href="{% url 'tarjetas:tarjetas_list' %}"
+               role="button">Ver todas las tarjetas</a>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4">
+            <a class="btn btn-secondary" href="{% url 'core:home' %}" role="button">Volver a Inicio</a>
+        </div>
+    </div>
+{% endblock contenido %}

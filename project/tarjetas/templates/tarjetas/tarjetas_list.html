@@ -1,0 +1,31 @@
+{% block titulo %}
+    Tarjetas: Lista de tarjetas con descuentos
+{% endblock titulo %}
+{% block contenido %}
+    <div class="py-lg-4 ">
+        <form action="{% url 'tarjetas:tarjetas_list' %}" method="get">
+            <input type="text" name="consulta" placeholder="Buscar...">
+        </form>
+    </div>
+    <ul>
+        {% comment  %}
+        {% for tarjeta in tarjetas %}
+        {% endcomment %}
+        {% for tarjeta in object_list %}
+            <li>
+                {{ tarjeta.nombre }}
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="fs-3 pb-4">
+        <a href="{% url 'tarjetas:home' %}">Volver al inicio de Tarjetas</a>
+    </div>
+{% endblock contenido %}
+
+{% comment %} 
+
+<a href="{% url 'producto:productocategoria_detail' producto.id %}">Detalle</a>
+<a href="{% url 'producto:productocategoria_update' producto.id %}">Cambiar</a>
+<a href="{% url 'producto:productocategoria_delete' producto.id %}">Borrar</a>
+
+{% endcomment %}

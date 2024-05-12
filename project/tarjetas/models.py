@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Tarjeta(models.Model):
+class Tarjetas(models.Model):
     """Definicion de Tarjetas"""
     DEBITO = 'débito'
     CREDITO = 'crédito'

@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+    <h1>Todos los Descuentos en un solo lugar</h1>
+{% endblock title %}
+
+{% block content %}
+    <ul>
+        <li><a href="{% url 'tarjetas:home' %}">Ver descuentos por Tarjeta</a></li>
+    </ul>
+{% endblock content %}
+
+{% comment %} 
+
+<li><a href="{% url 'bancos:home' %}">Ver descuentos por Banco</a></li>
+<li><a href="{% url 'rubros:home' %}">Ver descuento por Rubro</a></li>
+<li><a href="{% url 'nosotros:home' %}">Acerca de Nosotros</a></li>
+
+
+{% endcomment %}
