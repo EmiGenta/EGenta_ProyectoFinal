@@ -1,0 +1,33 @@
+{% block titulo %}
+    Bancos: {% if form.instance.pk %}Modificar{% else %}Ingresar{% endif %} un Banco
+{% endblock titulo %}
+
+{% block contenido %}
+<div class="container my-5">
+    <h3 class="pb-3 border-bottom">Banco:</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3 row">
+            <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-10">
+                {{ form.nombre }}
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="tipo" class="col-sm-2 col-form-label">Web</label>
+            <div class="col-sm-10">
+                {{ form.web }}
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </form>
+    <div class="fs-3 pb-4">
+        <a href="{% url 'bancos:home' %}" class="btn btn-secondary">Volver al Listado de Bancos</a>
+    </div>
+</div>
+{% endblock contenido %}

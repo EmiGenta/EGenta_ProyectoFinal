@@ -1,0 +1,31 @@
+{% block titulo %}
+    Descuentos por Banco
+{% endblock titulo %}
+{% block contenido %}
+    <div class="py-lg-4 ">
+        <form action="{% url 'bancos:bancos_list' %}" method="get">
+            <input type="text" name="consulta" placeholder="Buscar...">
+        </form>
+    </div>
+    <ul>
+        {% comment  %}
+        {% for banco in bancos %}
+        {% endcomment %}
+        {% for banco in object_list %}
+            <li>
+                {{ banco.nombre }} - {{ banco.web }} 
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="fs-3 pb-4">
+        <a href="{% url 'bancos:home' %}">Volver a Bancos</a>
+    </div>
+{% endblock contenido %}
+
+{% comment %} 
+
+<a href="{% url 'producto:productocategoria_detail' producto.id %}">Detalle</a>
+<a href="{% url 'producto:productocategoria_update' producto.id %}">Cambiar</a>
+<a href="{% url 'producto:productocategoria_delete' producto.id %}">Borrar</a>
+
+{% endcomment %}
