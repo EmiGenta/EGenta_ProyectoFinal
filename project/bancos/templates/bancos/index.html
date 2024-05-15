@@ -27,7 +27,10 @@
                                 <tr>
                                     <td>{{ banco.nombre }}</td>
                                     <td><a href="{{ banco.web }}" target="_blank" class="text-decoration-none text-primary">{{ banco.web }}</a></td>
-                                    <td><a href="{% url 'bancos:bancos_detail' banco.pk %}" class="btn btn-info btn-sm">Detalle</a></td>
+                                    <td>
+                                        <a href="{% url 'bancos:bancos_detail' banco.pk %}" class="btn btn-info btn-sm">Detalle</a>
+                                        <a href="{% url 'bancos:bancos_update' banco.pk %}" class="btn btn-info btn-sm">Cambiar</a>
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>

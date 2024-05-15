@@ -43,3 +43,8 @@ class BancosDetail(DetailView):
     model = models.Bancos
     context_object_name = 'banco'
     template_name = 'bancos/bancos_detail.html'
+
+class BancosUpdate(UpdateView):
+    model = models.Bancos
+    form_class = forms.BancosForm
+    success_url = reverse_lazy("bancos:home")
