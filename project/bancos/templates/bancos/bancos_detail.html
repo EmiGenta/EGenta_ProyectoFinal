@@ -1,0 +1,19 @@
+{% block titulo %}
+    Bancos: +Info
+{% endblock titulo %}
+{% block contenido %}
+    {% if banco %}
+        <ul>
+            <li>Nombre: {{ banco.nombre }}</li>
+            <li>Sitio Web: <a href="{{ banco.web }}" target="_blank">{{ banco.web }}</a></li>
+            <li>País de Origen: {{ banco.pais_origen }}</li>
+            <li>Casa Central: {{ banco.casa_central }}</li>
+            <li>Email de Contacto: <a href="mailto:{{ banco.mail_contacto }}">{{ banco.mail_contacto }}</a></li>
+        </ul>
+    {% else %}
+        <p>No se encontraron datos para este banco.</p>
+    {% endif %}
+    <div class="fs-3 pb-4">
+        <a href="{% url 'bancos:home' %}" class="btn btn-secondary">Volver al Listado de Bancos</a>
+    </div>
+{% endblock contenido %}
