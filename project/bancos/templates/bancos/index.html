@@ -15,7 +15,9 @@
                 <h5>Bancos Disponibles:</h5>
                 <ul class="list-group mb-3">
                     {% for banco in bancos %}
-                        <li class="list-group-item">{{ banco.nombre }} - {{ banco.web }}</li>
+                        <li 
+                            class="list-group-item">{{ banco.nombre }} - <a href="{{ banco.web }}" target="_blank">{{ banco.web }}</a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
