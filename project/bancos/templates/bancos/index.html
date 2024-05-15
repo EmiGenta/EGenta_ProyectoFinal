@@ -30,6 +30,7 @@
                                     <td>
                                         <a href="{% url 'bancos:bancos_detail' banco.pk %}" class="btn btn-info btn-sm">Detalle</a>
                                         <a href="{% url 'bancos:bancos_update' banco.pk %}" class="btn btn-info btn-sm">Cambiar</a>
+                                        <a href="{% url 'bancos:bancos_delete' banco.pk %}" class="btn btn-info btn-sm">Eliminar</a>
                                     </td>
                                 </tr>
                             {% endfor %}

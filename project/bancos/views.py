@@ -48,3 +48,7 @@ class BancosUpdate(UpdateView):
     model = models.Bancos
     form_class = forms.BancosForm
     success_url = reverse_lazy("bancos:home")
+
+class BancosDelete(LoginRequiredMixin, DeleteView):
+    model = models.Bancos
+    success_url = reverse_lazy("bancos:home")
