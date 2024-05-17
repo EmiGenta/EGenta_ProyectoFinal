@@ -1,0 +1,11 @@
+{% block contenido %}
+<div class="container my-5">
+    <h3 class="pb-3 border-bottom">Confirmar eliminación</h3>
+    <p>¿Está seguro que desea eliminar el descuento "{{ object }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'tarjetas:tarjetas_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
