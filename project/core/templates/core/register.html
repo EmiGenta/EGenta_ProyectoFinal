@@ -1,3 +1,4 @@
+<!-- templates/core/register.html -->
 {% extends 'core/base.html' %}
 {% block titulo %}
     Registro
@@ -9,6 +10,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Registrar nuevo usuario</button>
+        <button type="submit" class="btn btn-success">Confirmar</button>
+        <a href="{% url 'core:home' %}" class="btn btn-secondary">Cancelar</a>
     </form>
 {% endblock contenido %}
