@@ -1,8 +1,11 @@
 {% extends "core/base.html" %}
 
+{% block titulo %}
+    DESCUENTOS EN {{ tarjeta.nombre }}
+{% endblock titulo %}
+
 {% block contenido %}
 <div class="container my-5">
-    <h3 class="pb-3 border-bottom">Descuentos con {{ tarjeta.nombre }}</h3>
     <ul class="list-group mb-3">
         {% for descuento in descuentos %}
             <li class="list-group-item d-flex justify-content-between align-items-center">
