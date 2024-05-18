@@ -1,6 +1,7 @@
 {% block contenido %}
 <div class="container my-5">
-    <h3 class="pb-3 border-bottom">Nuevo Descuento:</h3>
+    <h3 class="pb-3 border-bottom">{% if form.instance.pk %}Editar{% else %}Ingresar
+        {% endif %} Descuento:</h3>
     <form method="post">
         {% csrf_token %}
         <div class="mb-3 row">
@@ -43,6 +44,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-10">
                 <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="{% url 'tarjetas:descuentos_list' tarjeta_pk %}" class="btn btn-secondary">Cancelar</a>
             </div>
         </div>
     </form>

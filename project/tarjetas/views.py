@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.db.models.query import QuerySet
 from django.shortcuts import redirect, render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import (
     CreateView,
     DeleteView,
@@ -56,18 +56,38 @@ class DescuentoCreateView(CreateView):
     model = models.Descuento
     form_class = forms.DescuentoForm
     template_name = 'tarjetas/descuento_form.html'
-    success_url = reverse_lazy('tarjetas:tarjetas_list')
+    success_url = reverse_lazy('tarjetas:tarjetas_list')  # Usado para la redirección predeterminada si es necesario
 
     def get_initial(self):
         initial = super().get_initial()
         initial['tarjeta'] = self.kwargs['pk']
         return initial
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tarjeta_pk'] = self.kwargs['pk']
+        return context
+
+    def form_valid(self, form):
+        form.instance.tarjeta_id = self.kwargs['pk']
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('tarjetas:descuentos_list', args=[self.kwargs['pk']])
+
 class DescuentoUpdateView(UpdateView):
     model = models.Descuento
     form_class = forms.DescuentoForm
     template_name = 'tarjetas/descuento_form.html'
-    success_url = reverse_lazy('tarjetas:tarjetas_list')
+    success_url = reverse_lazy('tarjetas:tarjetas_list')  # Default fallback
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tarjeta_pk'] = self.object.tarjeta.pk
+        return context
+
+    def get_success_url(self):
+        return reverse('tarjetas:descuentos_list', args=[self.object.tarjeta.pk])
 
 class DescuentoDeleteView(DeleteView):
     model = models.Descuento
