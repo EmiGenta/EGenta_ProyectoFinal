@@ -16,6 +16,13 @@ class CustomUserCreationForm(UserCreationForm):
             'password2': forms.PasswordInput(attrs={'class': 'form-control'}),
         }
 
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.username = user.email  # Set username to be the email
+        if commit:
+            user.save()
+        return user
+
 class CustomAuthenticationForm(AuthenticationForm):
     username = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
