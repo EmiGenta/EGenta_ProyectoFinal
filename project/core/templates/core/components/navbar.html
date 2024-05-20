@@ -9,7 +9,7 @@
                 {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link {% if request.path == "/bancos/" %} active {% endif %}" href="{% url 'bancos:home' %}">Bancos</a></li>
                     <li class="nav-item"><a class="nav-link {% if request.path == "/tarjetas/" %} active {% endif %}" href="{% url 'tarjetas:home' %}">Tarjetas</a></li>
-                    <li class="nav-item"><a class="nav-link text-bg-info">{{ user.username }}</a></li>
+                    <li class="nav-item"><a class="nav-link text-bg-info">{{ user.email }}</a></li>
                     <li class="nav-item">
                         <form action="{% url 'core:logout' %}" method="post">
                             {% csrf_token %}
