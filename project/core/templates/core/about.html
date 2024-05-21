@@ -1,30 +1,24 @@
 {% extends 'core/base.html' %}
+{% load static %}
+
 {% block titulo %}
-    Sobre mí
+Sobre mí
 {% endblock titulo %}
+
 {% block contenido %}
-    <div class="container mt-5">
-        <h1 class="mb-4">Sobre Emiliano Genta</h1>
-        <div class="row">
-            <div class="col-md-4">
-                <img src="https://via.placeholder.com/300"
-                     class="img-fluid rounded-circle mb-3"
-                     alt="Emiliano Genta">
-            </div>
-            <div class="col-md-8">
-                <h2>Hola, soy Emiliano Genta</h2>
-                <p class="lead">Contador Público con una pasión inquebrantable por la tecnología.</p>
-                <p>
-                    Con 15 años de experiencia en el secotr financiero, he trabajado en áreas clave como Automatización y Optimización de Procesos, Quality Assurance, y actualmente, me desempeño como Business Analyst en una empresa de tecnología, implementando soluciones bancarias de vanguardia.
-                </p>
-                <p>
-                    En 2024, decidí dar un nuevo giro a mi carrera y profundizar mis conocimientos técnicos estudiando el lenguaje de programación Python. Este paso es solo el comienzo de mi viaje en el mundo del desarrollo, con la vista puesta en aprender también tecnologías frontend en el futuro cercano.
-                </p>
-                <p>
-                    Fuera del ámbito profesional, soy un ferviente amante del fútbol, hincha leal de Peñarol y un apasionado seguidor de la selección uruguaya.
-                </p>
-                <a href="{% url 'core:home' %}" class="btn btn-primary mt-3">Volver a Inicio</a>
-            </div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{% static 'core/img/yo.webp' %}" class="img-fluid rounded-circle mb-3 custom-img" alt="Emiliano Genta">
+        </div>
+        <div class="col-md-8">
+            <h2>Hola, soy Emiliano Genta</h2>
+            <p class="lead">Contador Público con una pasión inquebrantable por la tecnología.</p>
+            <p>Con 38 años de experiencia en el ámbito financiero, he trabajado en áreas clave como Automatización y Optimización de Procesos, Quality Assurance, y actualmente, me desempeño como Business Analyst en una empresa de tecnología, implementando soluciones bancarias de vanguardia.</p>
+            <p>En 2024, decidí dar un nuevo giro a mi carrera y profundizar mis conocimientos técnicos estudiando el lenguaje de programación Python. Este paso es solo el comienzo de mi viaje en el mundo del desarrollo, con la vista puesta en aprender también tecnologías frontend en el futuro cercano.</p>
+            <p>Fuera del ámbito profesional, soy un ferviente amante del fútbol, hincha leal de Peñarol y un apasionado seguidor de la selección uruguaya.</p>
+            <a href="{% url 'core:home' %}" class="btn btn-primary mt-3">Volver a Inicio</a>
         </div>
     </div>
+</div>
 {% endblock contenido %}
