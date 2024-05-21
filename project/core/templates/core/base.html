@@ -3,8 +3,7 @@
 <html lang="es">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>
@@ -13,21 +12,47 @@
             {% endblock title %}
         </title>
         <!-- Favicon-->
-        <link rel="icon"
-              type="image/x-icon"
-              href="{% static 'core/assets/favicon.ico' %}" />
+        <link rel="icon" type="image/x-icon" href="{% static 'core/assets/favicon.ico' %}" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'core/css/styles.css' %}" rel="stylesheet" />
+        <!-- Custom CSS-->
+        <style>
+            body {
+                background-color: #f8f9fa;
+            }
+            .custom-header {
+                background-color: #007bff;
+                color: white;
+                padding: 10px 0;
+                margin-bottom: 20px;
+                border-radius: 5px;
+            }
+            .custom-header h1 {
+                margin: 0;
+                padding: 20px;
+                font-size: 2rem;
+                text-align: center;
+            }
+            .custom-card {
+                border: none;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s;
+            }
+            .custom-card:hover {
+                transform: translateY(-5px);
+            }
+        </style>
     </head>
     <body>
         <!-- Responsive navbar-->
         {% include 'core/components/navbar.html' %}
         <!-- Page Content-->
         <div class="container px-4 px-lg-5">
-            <div class="row align-items-center my-5">
-                <h1 class="pb-lg-3 text-white bg-info px-3 py-2 rounded">
+            <div class="row align-items-center my-5 custom-header">
+                <h1>
                     {% block titulo %}
-                        NAVEGÁ + COMPRÁ + AHORRÁ 🤑💰
+                        NAVEGÁ + COMPRÁ + AHORRÁ
                     {% endblock titulo %}
                 </h1>
             </div>

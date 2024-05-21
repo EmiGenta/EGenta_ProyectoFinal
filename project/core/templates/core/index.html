@@ -1,12 +1,43 @@
-{% extends "core/base.html" %}
+{% extends 'core/base.html' %}
+{% load static %}
 
-{% block title %}
-    <h1>Todos los Descuentos en un solo lugar</h1>
-{% endblock title %}
+{% block contenido %}
 
-{% block content %}
-    <ul>
-        <li><a href="{% url 'tarjetas:home' %}">Ver descuentos por Tarjeta</a></li>
-        <li><a href="{% url 'bancos:home' %}">Ver descuentos por Banco</a></li>
-    </ul>
-{% endblock content %}
+    {% if user.is_authenticated %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">¡Bienvenido, {{ user.email }}!</h4>
+            <p>{{ mensaje }}</p>
+        </div>
+    {% endif %}
+
+    <!-- Heading Row-->
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-7">
+            <h1 class="font-weight-light">Descubre Descuentos</h1>
+            <p class="lead">
+                Descubre Descuentos es una plataforma web colaborativa que te permite encontrar descuentos en diferentes comercios organizados por rubro, banco y tarjeta. Esta plataforma te ayuda a ahorrar dinero al encontrar ofertas y promociones exclusivas en una amplia variedad de productos y servicios.
+            </p>
+            <a class="btn btn-success btn-lg" href="https://wa.me/542619999999" target="_blank">Contactar por WhatsApp</a>
+        </div>
+        <div class="col-lg-5">
+            <img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'core/img/sale-promotion-shopping-discount-stamp-concept.webp' %}" alt="Descuentos">
+        </div>
+    </div>
+
+    <!-- Call to Action-->
+    <div class="card text-white bg-primary my-5 py-4 text-center custom-card">
+        <div class="card-body">
+            <p class="text-white m-0">Descuentos Destacados</p>
+        </div>
+    </div>
+
+    <!-- Content Row-->
+    <div class="row gx-4 gx-lg-5">
+        {% include 'core/components/card.html' with titulo="McDonald's 25%" texto="Descuento en combos Big Mac y Doble Cuarto de Libra con Queso pagando con Mercado Pago" %}
+        {% include 'core/components/card.html' with titulo="Zara 20%" texto="Durante el mes de mayo tienes 20% de descuento con OCA crédito" %}
+        {% include 'core/components/card.html' with titulo="Ancap 10%" texto="15% de descuento pagando en efectivo en todas las estaciones Ancap del país" %}
+        {% include 'core/components/card.html' with titulo="Bookshop 15%" texto="Todos los días pagando con tarjeta de crédito Santander oro y platinum" %}
+        {% include 'core/components/card.html' with titulo="Multiahorro 30%" texto="En línea blanca 30% de descuento con Brou Recompensa" %}
+        {% include 'core/components/card.html' with titulo="Farmacity 25%" texto="Descuentos en productos seleccionados por el mes de mayo pagando con tarjetas de crédito Scotiabank" %}
+    </div>
+{% endblock contenido %}
