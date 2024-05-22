@@ -6,16 +6,31 @@
 
 {% block contenido %}
 <div class="container my-5">
-    <ul class="list-group mb-3">
-        {% for descuento in descuentos %}
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{ descuento.nombre_local }} ({{ descuento.porcentaje }}%) -
-                    <a href="{% url 'tarjetas:descuento_update' descuento.pk %}" class="btn btn-sm btn-warning">Editar</a> - 
-                    <a href="{% url 'tarjetas:descuento_delete' descuento.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'tarjetas:descuento_create' view.kwargs.pk %}" class="btn btn-primary">Agregar Descuento</a>
+    <h2 class="pb-3 border-bottom">Listado de Descuentos</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre del Local</th>
+                <th>Porcentaje de Descuento</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for descuento in descuentos %}
+                <tr>
+                    <td>{{ descuento.nombre_local }}</td>
+                    <td>{{ descuento.porcentaje }}%</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Acciones">
+                            <a href="{% url 'tarjetas:descuento_update' descuento.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="{% url 'tarjetas:descuento_delete' descuento.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'tarjetas:descuento_create' tarjeta.pk %}" class="btn btn-primary">Agregar Descuento</a>
     <a href="{% url 'tarjetas:tarjetas_list' %}" class="btn btn-secondary">Volver a Tarjetas</a>
 </div>
 {% endblock %}
