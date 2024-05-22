@@ -92,4 +92,12 @@ class DescuentoUpdateView(UpdateView):
 class DescuentoDeleteView(DeleteView):
     model = models.Descuento
     template_name = 'tarjetas/descuento_confirm_delete.html'
-    success_url = reverse_lazy('tarjetas:tarjetas_list')    
+
+    def get_success_url(self):
+        tarjeta_pk = self.object.tarjeta.pk
+        return reverse_lazy('tarjetas:descuentos_list', kwargs={'pk': tarjeta_pk})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tarjeta_pk'] = self.object.tarjeta.pk
+        return context   
